@@ -24,7 +24,13 @@ Since a single HTTP endpoint exposed from the Docker container controls the serv
 To build Docker image:
 
 ```sh
-$ ./build.sh
+$ docker compose build
+```
+
+To run Docker image:
+
+```sh
+$ docker compose up -d
 ```
 
 Alternatively pull the Docker Hub image:
@@ -47,7 +53,7 @@ Server will now be available from `http://127.0.0.1:6878`:
 
 ```sh
 $ curl http://127.0.0.1:6878/webui/api/service?method=get_version
-# {"result": {"code": 3014900, "platform": "linux", "version": "3.1.49"}, "error": null}
+# {"result": {"code": 3017400, "platform": "linux", "version": "3.1.74"}, "error": null}
 ```
 
 A program ID can be started with [`playstream.py`](playstream.py):
