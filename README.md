@@ -11,7 +11,7 @@ An [Ace Stream](http://www.acestream.org/) server Docker image.
 
 What this provides:
 
-- Dockerized Ace Stream server (version `3.1.49`) running under Debian 8 (Jessie) slim.
+- Dockerized Ace Stream server (version `3.1.74`) running under Debian 10 (Buster) slim.
 - Bash script to start server and present HTTP API endpoint to host.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
 	- Commence streaming of a given program ID.
@@ -30,7 +30,7 @@ $ ./build.sh
 Alternatively pull the Docker Hub image:
 
 ```sh
-$ docker pull magnetikonline/acestream-server:3.1.49_debian_8.11
+$ docker pull [todo]
 ```
 
 ## Usage
