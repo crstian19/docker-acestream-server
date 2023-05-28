@@ -1,25 +1,32 @@
 FROM debian:10-slim
 LABEL maintainer="RonZ-dev"
 
-ARG ACE_STREAM_VERSION
+ARG DEBIAN_FRONTEND="noninteractive"
 
-RUN DEBIAN_FRONTEND="noninteractive" \
-	apt-get update && apt-get --yes upgrade && \
-	# install packages
-	apt-get --no-install-recommends --yes install \
-		curl \
-		libpython2.7 \
-		net-tools \
-		python-apsw \
-		python-lxml \
-		python-m2crypto \
-		python-pkg-resources && \
-	# clean up
-	apt-get clean && \
-	rm --force --recursive /var/lib/apt/lists && \
-	# install server
-	curl --silent "http://acestream.org/downloads/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz" | \
-		tar --extract --gzip
+# install packages
+RUN apt-get update && apt-get --yes upgrade
+
+RUN apt-get --no-install-recommends --yes install \
+	wget \
+	libpython2.7 \
+	net-tools \
+	python-apsw \
+	python-lxml \
+	python-m2crypto \
+	python-pkg-resources \
+	ca-certificates
+
+# clean up
+RUN apt-get clean && \
+	rm --force --recursive /var/lib/apt/lists
+
+# install server
+ARG ACE_STREAM_VERSION
+ENV ACE_STREAM_VERSION "$ACE_STREAM_VERSION"
+
+RUN echo "Building AceStream: $ACE_STREAM_VERSION"
+
+RUN wget -O - https://download.acestream.media/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz | tar -xz -C /
 
 EXPOSE 6878/tcp
 
