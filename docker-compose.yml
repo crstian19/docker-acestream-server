@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+  acestream-server:
+    container_name: acestream-server
+    restart: always
+    ports:
+      - "6878:6878"
+    env_file:
+      - ./.env
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+      args:
+        - ACE_STREAM_VERSION=$ACE_STREAM_VERSION
