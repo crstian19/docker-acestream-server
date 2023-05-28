@@ -14,11 +14,19 @@ RUN apt-get --no-install-recommends --yes install \
 	python-lxml \
 	python-m2crypto \
 	python-pkg-resources \
+	python-pip \
+	python-setuptools \
+	build-essential \
 	ca-certificates
 
 # clean up
 RUN apt-get clean && \
 	rm --force --recursive /var/lib/apt/lists
+
+#adding python modules
+RUN pip install requests \
+	pycryptodome \
+	isodate
 
 # install server
 ARG ACE_STREAM_VERSION
