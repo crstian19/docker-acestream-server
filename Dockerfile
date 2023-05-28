@@ -1,5 +1,5 @@
-FROM debian:8-slim
-LABEL maintainer="Peter Mescalchin <peter@magnetikonline.com>"
+FROM debian:10-slim
+LABEL maintainer="RonZ-dev"
 
 ARG ACE_STREAM_VERSION
 
