@@ -5,7 +5,11 @@ services:
     container_name: acestream-server
     restart: always
     ports:
-      - "6878:6878"
+      - "${ACE_PLAYER_PORT}:6878"
+      - "${ACE_API_PORT}:7000"
+    volumes:
+      - ./config/acestream.conf:/acestream.conf
+      - ./logs:/logs
     env_file:
       - ./.env
     build:
