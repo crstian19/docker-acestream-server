@@ -37,7 +37,6 @@ RUN echo "Building AceStream: $ACE_STREAM_VERSION"
 RUN wget -O - https://download.acestream.media/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz | tar -xz -C /
 
 EXPOSE 6878/tcp
-EXPOSE 7000/tcp
 
 ENTRYPOINT ["/start-engine"]
 CMD ["--client-console", "@/acestream.conf"]
