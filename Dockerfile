@@ -28,6 +28,7 @@ RUN pip install requests \
 	pycryptodome \
 	isodate
 
+COPY .env ./
 # install server
 ARG ACE_STREAM_VERSION
 ENV ACE_STREAM_VERSION "$ACE_STREAM_VERSION"
