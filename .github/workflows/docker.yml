@@ -11,13 +11,12 @@ jobs:
     - name: Check Out Repo
       uses: actions/checkout@v2
 
-    - name: Set up Kaniko
-      uses: GoogleContainerTools/kaniko-action@v1.0.0
+    - name: Kaniko builder
+      uses: aevea/action-kaniko@v0.10.0
       with:
-        image: ghcr.io/${{ github.repository }}/docker-acestream-server:latest
-        context: . 
         registry: ghcr.io
-        dockerfile: Dockerfile  #
+        password: ${{ secrets.GITHUB_TOKEN }}
+        image: kaniko
 
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v1
@@ -25,7 +24,3 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Build and Push Docker Image
-      run: |
-        /kaniko/executor --context ${GITHUB_WORKSPACE} --dockerfile ${GITHUB_WORKSPACE}/Dockerfile --destination ghcr.io/${{ github.repository }}:latest
