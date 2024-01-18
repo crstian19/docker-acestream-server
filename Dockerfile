@@ -30,7 +30,7 @@ RUN pip install requests \
 
 COPY .env ./
 # install server
-ARG ACE_STREAM_VERSION
+ARG ACE_STREAM_VERSION=3.1.74_debian_10.5
 ENV ACE_STREAM_VERSION "$ACE_STREAM_VERSION"
 
 RUN echo "Building AceStream: $ACE_STREAM_VERSION"
