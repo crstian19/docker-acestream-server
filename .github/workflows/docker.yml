@@ -17,7 +17,6 @@ jobs:
         registry: ghcr.io
         password: ${{ secrets.GITHUB_TOKEN }}
         cache: true
-        image: /
         cache_registry: cache
         tag_with_latest: true
 
