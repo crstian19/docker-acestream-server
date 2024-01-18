@@ -17,6 +17,7 @@ jobs:
         registry: ghcr.io
         password: ${{ secrets.GITHUB_TOKEN }}
         cache: true
+        image: latest
         cache_registry: cache
 
     - name: Log in to GitHub Container Registry
