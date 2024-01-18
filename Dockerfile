@@ -1,5 +1,5 @@
 FROM debian:10-slim
-LABEL maintainer="RonZ-dev"
+LABEL maintainer="Crstian19"
 
 ARG DEBIAN_FRONTEND="noninteractive"
 
