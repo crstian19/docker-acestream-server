@@ -12,12 +12,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Kaniko builder
-      uses: aevea/action-kaniko@v0.10.0
+      uses: aevea/action-kaniko@master
       with:
         registry: ghcr.io
         password: ${{ secrets.GITHUB_TOKEN }}
         cache: true
-        image: crstian19/docker-acestream-server
+        image: ""
         cache_registry: cache
         tag_with_latest: true
 
