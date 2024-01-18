@@ -1,3 +1,12 @@
-              - name: Build and push Docker images
-                uses: docker/build-push-action@v5.1.0
-            
+      -
+        # Setting up Docker Buildx with docker-container driver is required
+        # at the moment to be able to use a subdirectory with Git context
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: "{{defaultContext}}:mysubdir"
+          push: true
+          tags: user/app:latest
