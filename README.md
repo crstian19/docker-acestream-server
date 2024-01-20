@@ -19,6 +19,25 @@ What this provides:
 
 Since a single HTTP endpoint exposed from the Docker container controls the server _and_ provides the output stream, this provides one of the easier methods for playback of Ace Streams on traditionally unsupported operating systems such as macOS.
 
+
+## Docker compose
+
+``` yaml
+
+version: "3.8"
+
+services:
+  acestream-server:
+    container_name: acestream-server
+    image: ghcr.io/crstian19/docker-acestream-server:main
+    restart: always
+    ports:
+      - "6878:6878"
+    volumes:
+      - ./acestream.conf:/acestream.conf
+
+
+```
 ## Building
 
 To build Docker image:
