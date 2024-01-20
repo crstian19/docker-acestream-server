@@ -1,18 +1,11 @@
-version: "3.2"
+version: "3.8"
 
 services:
   acestream-server:
     container_name: acestream-server
+    image: ghcr.io/crstian19/docker-acestream-server:main
     restart: always
     ports:
-      - "${ACE_API_PORT}:6878"
+      - "6878:6878"
     volumes:
-      - ./config/acestream.conf:/acestream.conf
-      - ./logs:/logs
-    env_file:
-      - ./.env
-    build:
-      dockerfile: ./Dockerfile
-      context: .
-      args:
-        - ACE_STREAM_VERSION=$ACE_STREAM_VERSION
+      - ./acestream.conf:/acestream.conf
