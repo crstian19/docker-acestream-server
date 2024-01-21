@@ -1,4 +1,7 @@
 # Docker Ace Stream server
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/crstian19/docker-acestream-server/docker.yml)
+![Docker Pulls](https://img.shields.io/docker/pulls/crstian/docker-acestream-server?logo=Docker&style=flat-square)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/crstian/docker-acestream-server?logo=Docker&style=flat-square)
 
 An [Ace Stream](http://www.acestream.org/) server Docker image.
 
