@@ -23,10 +23,8 @@ RUN apt-get --no-install-recommends --yes install \
 RUN apt-get clean && \
 	rm --force --recursive /var/lib/apt/lists
 
-RUN pip install  uv
-
 #adding python modules
-RUN uv pip install requests \
+RUN pip install requests \
 	pycryptodome \
 	isodate
 
