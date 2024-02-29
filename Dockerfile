@@ -42,4 +42,4 @@ RUN wget -O - https://download.acestream.media/linux/acestream_${ACE_STREAM_VERS
 EXPOSE 6878/tcp
 
 ENTRYPOINT ["/start-engine"]
-CMD ["--live-cache-type memory", "--vod-cache-type memory", "--client-console", "@/acestream.conf"]
+CMD ["--client-console", "@/acestream.conf"]
