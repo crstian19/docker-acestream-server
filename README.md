@@ -14,7 +14,7 @@ An [Ace Stream](http://www.acestream.org/) server Docker image.
 
 What this provides:
 
-- Dockerized Ace Stream server (version `3.1.74`) running under Debian 10 (Buster) slim.
+- Dockerized Ace Stream server (version `3.2.3`) running under Ubuntu 22.04.
 - Bash script to start server and present HTTP API endpoint to host.
 - Python playback script [`playstream.py`](playstream.py) instructing server to:
 	- Commence streaming of a given program ID.
