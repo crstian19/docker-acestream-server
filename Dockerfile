@@ -1,43 +1,45 @@
-FROM debian:10-slim
+FROM ubuntu:22.04
 LABEL maintainer="Crstian19"
-
-ARG DEBIAN_FRONTEND="noninteractive"
 
 # install packages
 RUN apt-get update && apt-get --yes upgrade
 
 RUN apt-get --no-install-recommends --yes install \
 	wget \
-	libpython2.7 \
+	python3.10 \
+	libpython3.10 \
+	python3.10-distutils \
 	net-tools \
-	python-apsw \
-	python-lxml \
-	python-m2crypto \
-	python-pkg-resources \
-	python-pip \
-	python-setuptools \
+	python3-pip \
 	build-essential \
-	ca-certificates
+	libsqlite3-dev \
+	libxml2-dev \
+	libxslt1-dev \
+	ca-certificates && \
+	pip install uv
 
 # clean up
 RUN apt-get clean && \
 	rm --force --recursive /var/lib/apt/lists
 
+#RUN pip install uv
+
 #adding python modules
-RUN pip install requests \
+RUN uv pip install --system requests \
 	pycryptodome \
+	lxml apsw PyNaCl \
 	isodate
 
-COPY .env ./
-# install server
-ARG ACE_STREAM_VERSION=3.1.74_debian_10.5
-ENV ACE_STREAM_VERSION "$ACE_STREAM_VERSION"
 
-RUN echo "Building AceStream: $ACE_STREAM_VERSION"
+#RUN wget -O - https://download.acestream.media/linux/acestream_3.2.3_ubuntu_22.04_x86_64_py3.10.tar.gz | tar -xz -C /
 
-RUN wget -O - https://download.acestream.media/linux/acestream_${ACE_STREAM_VERSION}_x86_64.tar.gz | tar -xz -C /
+RUN wget --progress=dot:giga "https://download.acestream.media/linux/acestream_3.2.3_ubuntu_22.04_x86_64_py3.10.tar.gz" && \
+    mkdir acestream && \
+    tar zxf "acestream_3.2.3_ubuntu_22.04_x86_64_py3.10.tar.gz" -C acestream
+
 
 EXPOSE 6878/tcp
 
 ENTRYPOINT ["/start-engine"]
 CMD ["--client-console", "@/acestream.conf"]
+
