@@ -35,11 +35,11 @@ RUN uv pip install --system requests \
 
 RUN wget --progress=dot:giga "https://download.acestream.media/linux/acestream_3.2.3_ubuntu_22.04_x86_64_py3.10.tar.gz" && \
     mkdir acestream && \
-    tar zxf "acestream_3.2.3_ubuntu_22.04_x86_64_py3.10.tar.gz" -C acestream
-
+    tar zxf "acestream_3.2.3_ubuntu_22.04_x86_64_py3.10.tar.gz" -C acestream && \
+    mv acestream /opt/acestream
 
 EXPOSE 6878/tcp
 
-ENTRYPOINT ["/start-engine"]
+ENTRYPOINT ["/opt/acestream/start-engine"]
 CMD ["--client-console", "@/acestream.conf"]
 
