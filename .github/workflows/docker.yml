@@ -37,7 +37,7 @@ jobs:
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@906ecf0fc0a80f9110f79d9e6c04b1080f4a2621
+        uses: docker/metadata-action@dde548f1603e003959483c86c72ec03454216f9c
         with:
           images: |
             crstian/docker-acestream-server
